@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { GlobalContext } from '../context/GlobalContext';
 
 interface CardProps {
   product: Product;
 }
 
 const SingleProductCard: React.FC<CardProps> = ({ product }) => {
+  const {priceFix} = useContext(GlobalContext);
   const history = useHistory();
   return (
     <div id='product'>
@@ -46,8 +48,8 @@ const SingleProductCard: React.FC<CardProps> = ({ product }) => {
                 <h3 className='card-title'>
                   {product.title}
                   <div className=''>
-                    <small className='text-info'>${product.price}</small>
-                  </div>
+                    <small className='text-info'>${priceFix(+product.price)}</small>
+                    </div>
                 </h3>
                 {/* product details */}
                 <div className='card-details'>

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {GlobalContext} from '../context/GlobalContext';
 import { Link, useHistory } from 'react-router-dom';
 
 interface CardProps {
@@ -7,6 +8,7 @@ interface CardProps {
 
 const ProductCard: React.FC<CardProps> = ({ product }) => {
   const history = useHistory();
+  const {priceFix} = useContext(GlobalContext);
   return (
     <div className='card h-100 product-card-hover d-flex flex-column justify-content-between'>
       <span
@@ -25,7 +27,7 @@ const ProductCard: React.FC<CardProps> = ({ product }) => {
             <Link to={`/products/${product.id}`}>{product.title}</Link>
           </h5>
           <div className='d-flex justify-content-between align-items-center'>
-            <strong>${product.price}</strong>
+            <strong>${priceFix(+product.price)}</strong>
             <span className='badge badge-warning'>{product.category}</span>
           </div>
         </div>

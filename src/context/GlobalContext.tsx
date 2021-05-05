@@ -1,5 +1,4 @@
-import React, { createContext, useState, useReducer } from 'react';
-import { couldStartTrivia } from 'typescript';
+import React, { createContext, useReducer } from 'react';
 import instance from '../api/apiConfig';
 
 // Initialize a default state for our app

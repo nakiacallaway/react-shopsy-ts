@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalContext';
+import {setTypeColor} from '../services';
 
 interface CardProps {
   product: Product;
@@ -56,9 +57,7 @@ const SingleProductCard: React.FC<CardProps> = ({ product }) => {
                   <h4>Description</h4>
                   <p>{product.description}</p>
                   <div>
-                    <span className='badge badge-warning'>
-                      {product.category}
-                    </span>
+                  <span className='badge' style={{ backgroundColor: setTypeColor(product.category)}}>{product.category}</span>
                   </div>
                 </div>
                 {/* product add to cart */}
